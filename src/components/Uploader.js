@@ -11,10 +11,11 @@ const Uploader = () => {
     console.log(status, meta);
   };
 
-  const handleSubmit = async (files) => {
+  
+ const handleSubmit = async (files) => {
     const f = files[0];
-    let body= f["file"];
-    
+    let body=    f["file"];
+    console.log('Hi Dinesh',f["file"].name);
     // * GET request: presigned URL
     const response = await axios({
       method: "GET",
@@ -22,14 +23,17 @@ const Uploader = () => {
     });
 
     console.log("Response: ", response);
+
+
 console.log(JSON.stringify(body));
     // * PUT request: upload file to S3
     const result = await fetch(response.data.uploadURL, {
       method: "PUT",
-      body: f["file"],
+      body: body,
     });
     console.log("Result: ", result);
   };
+  
 
   return (
     <Dropzone
