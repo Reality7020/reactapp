@@ -13,15 +13,16 @@ const Uploader = () => {
 
   const handleSubmit = async (files) => {
     const f = files[0];
-    console.log('Hi Dinesh',f["file"].name);
+    let body= f["file"];
+    
     // * GET request: presigned URL
     const response = await axios({
       method: "GET",
-      url: API_ENDPOINT,
+      url: API_ENDPOINT+'?filename='+body.name,
     });
 
     console.log("Response: ", response);
-
+console.log(JSON.stringify(body));
     // * PUT request: upload file to S3
     const result = await fetch(response.data.uploadURL, {
       method: "PUT",
