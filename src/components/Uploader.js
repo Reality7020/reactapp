@@ -45,7 +45,7 @@ console.log(JSON.stringify(body));
       canCancel={false}
       inputContent="Drop An Image"
       styles={{
-        dropzone: { width: 400, height: 300 },
+        dropzone: { width: 600, height: 300 },
         dropzoneActive: { borderColor: "blue" },
       }}
     />
